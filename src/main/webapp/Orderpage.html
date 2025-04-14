@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORDER MANAGEMENT</title>
+  <link rel="stylesheet" href="Style/style.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Customer Order Management</h1>
+        <nav>
+            <a href="#orders">View Orders</a>
+            <a href="#place-order">Place Order</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="orders" class="order-section">
+            <h2>Current Orders</h2>
+            <p>List of all current customer orders will be displayed here.</p>
+        </div>
+
+        <div id="place-order" class="order-section">
+            <h2>Place a New Order</h2>
+            <form>
+                <label for="customer-name">Name:</label><br>
+                <input type="text" id="customer-name" name="customer-name" required><br><br>
+                <label for="order-details">Order Details:</label><br>
+                <textarea id="order-details" name="order-details" rows="4" required></textarea><br><br>
+                <input type="submit" value="Submit Order">
+            </form>
+        </div>
+
+        <div id="contact" class="order-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feel free to reach out to us at:</p>
+            <p>Email: contact@restaurant.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Restaurant Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
