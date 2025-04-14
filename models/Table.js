@@ -19,7 +19,7 @@ const TableSchema = new mongoose.Schema({
     orderStatus: {
         type: String,
         required: true,
-        enum: ['Pending','Completed', 'Cancelled'], // Example statuses
+        enum: ['Pending','Completed', 'Cancelled'], 
         default: 'Pending'
     },
     shiftID: {
