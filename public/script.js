@@ -55,9 +55,9 @@ const renderOrders = (orders) => {
             <p>Ghi chú: ${order.note || 'Không có ghi chú'}</p>
             <button 
                 data-id="${order.orderDetailID}" 
-                style="background-color: ${order.isDone ? 'red' : 'green'}; color: white;"
+                style="background-color: ${order.isDone ? 'green' : 'red'}; color: white;"
                 onclick="markOrderComplete(${order.orderDetailID})">
-                ${order.isDone ? 'Chưa hoàn thành' : 'Hoàn thành'}
+                ${order.isDone ? 'Hoàn thành':'Chưa hoàn thành'  }
             </button>
         `;
         ordersSlider.appendChild(div);
@@ -80,7 +80,7 @@ const renderDishes = (dishes) => {
             <button 
                 data-id="${dish.dishID}" 
                 style="background-color: ${dish.isAvailable ? 'red' : 'green'}; color: white;"
-                onclick="markmarkDishAvailable(${dish.dishID})">
+                onclick="markDishAvailable(${dish.dishID})">
                 ${dish.isAvailable ? 'Không có sẵn' : 'Có sẵn'}
             </button>
         `;
