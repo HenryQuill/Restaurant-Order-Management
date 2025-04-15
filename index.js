@@ -16,6 +16,9 @@ console.log('Connecting to MongoDB...');
 
 // Import routes
 const OrderDetailRoute = require('./api_routes/OrderDetailRoute');
+const OrderDetailStatusRoute = require('./api_routes/OrderDetailStatusRoute'); 
+const DishRoute = require('./api_routes/DishRoute');
+const DishStatusRoute = require('./api_routes/DishStatusRoute');
 
 // Middleware
 app.use(cors());
@@ -24,6 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Use routes
 app.use('/api_routes/OrderDetailRoute', OrderDetailRoute);
+app.use('/api_routes/OrderDetailStatusRoute', OrderDetailStatusRoute);
+app.use('/api_routes/DishRoute', DishRoute);
+app.use('/api_routes/DishStatusRoute', DishStatusRoute);
 
 // Function to initialize collections
 async function initializeCollections() {

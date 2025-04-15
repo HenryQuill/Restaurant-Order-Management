@@ -33,6 +33,7 @@ const OrderDetailSchema = new mongoose.Schema({
     },
     isDone: {
         type: Boolean,
+        default: false,
         required: true
     }
 });

@@ -25,6 +25,7 @@ const DishSchema = new mongoose.Schema({
     },
     isAvailable: {
         type: Boolean,
+        default: false,
         required: true
     }
 });
