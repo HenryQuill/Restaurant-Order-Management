@@ -1,110 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý bếp</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css"
-  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-    <!-- fonts style -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Raleway:400,700&display=swap"
-    rel="stylesheet" />
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhân viên quản lý</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="sub_page">
-    <div class="hero_area">
-        <!-- header section strats -->
-        <header class="header_section">
-          <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg custom_nav-container">
-              <a class="navbar-brand" href="Chef.html">
-                <img src="images/logo.png" alt="" />
-                <span>
-                  Chef
-                </span>
-              </a>
-    
-              <div class="navbar-collapse" id="">
-                <div class="custom_menu-btn">
-                  <button onclick="openNav()">
-                    <span class="s-1"> </span>
-                    <span class="s-2"> </span>
-                    <span class="s-3"> </span>
-                  </button>
-                </div>
-                <div id="myNav" class="overlay">
-                  <div class="overlay-content">
-                    <a href="waiter.html">Waiter page </a>
-                    <a href="manager.html">Manager page</a>
-                  </div>
-                </div>
-              </div>
-            </nav>
+<body>
+  <div class="d-flex">
+    <div class="sidebar bg-dark text-white">
+      <a href="#tables" class="nav-link active" data-tab="tables">Danh sách bàn</a>
+      <a href="#bills" class="nav-link" data-tab="bills">Tổng hợp phiếu tính tiền</a>
+      <a href="#history" class="nav-link" data-tab="history">Lịch sử phiếu tính tiền</a>
+      <a href="login.html" onclick="logout()">Đăng xuất</a>
+    </div>
+    <div class="content flex-grow-1 p-4">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#tables" data-tab="tables">Danh sách bàn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#bills" data-tab="bills">Tổng hợp phiếu tính tiền</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#history" data-tab="history">Lịch sử phiếu tính tiền</a>
+        </li>
+      </ul>
+      <div id="tables" class="tab-content active">
+        <h3>Danh sách bàn</h3>
+        <div class="row row-cols-4 g-4" id="table-grid"></div>
+        <div id="order-details" class="d-none">
+          <h3>Chi tiết đơn hàng - <span id="table-name"></span></h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Món ăn</th>
+                <th>Số lượng</th>
+                <th>Ghi chú</th>
+                <th>Giá</th>
+              </tr>
+            </thead>
+            <tbody id="order-items"></tbody>
+          </table>
+          <div class="add-dish-form">
+            <select id="dish-select" class="form-select d-inline-block w-auto"></select>
+            <input type="number" id="quantity" class="form-control d-inline-block w-auto" value="1" min="1">
+            <input type="text" id="note" class="form-control d-inline-block w-auto" placeholder="Ghi chú">
+            <button class="btn btn-primary" style="background-color: #ff7e00; border: none;" onclick="addDish()">Thêm món</button>
           </div>
-        </header>
-        <!-- end header section -->
+          <button class="btn btn-primary mt-3" style="background-color: #ff7e00; border: none;" onclick="finishOrder()">Kết thúc đơn hàng</button>
+        </div>
       </div>
-
-    <!-- order section -->
-    <section class="hot_section layout_padding">
-        <div class="container">
-            <div class="heading_container">
-              <h2>
-                Danh sách đơn hàng
-              </h2>
-              <hr>
-            </div>
+      <div id="bills" class="tab-content">
+        <h3>Tổng hợp phiếu tính tiền</h3>
+        <select id="shift-select" class="form-select w-auto mb-3" onchange="fetchBills()">
+          <option value="">Chọn ca trực</option>
+        </select>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Mã hóa đơn</th>
+              <th>Bàn</th>
+              <th>Nhân viên</th>
+              <th>Ca trực</th>
+              <th>Tổng tiền</th>
+            </tr>
+          </thead>
+          <tbody id="bill-list"></tbody>
+        </table>
+      </div>
+      <div id="history" class="tab-content">
+        <h3>Lịch sử phiếu tính tiền</h3>
+        <div class="mb-3">
+          <input type="date" id="start-date" class="form-control d-inline-block w-auto">
+          <input type="date" id="end-date" class="form-control d-inline-block w-auto">
+          <button class="btn btn-primary" style="background-color: #ff7e00; border: none;" onclick="fetchHistory()">Lọc</button>
         </div>
-
-        <!-- slider các đơn hàng  -->
-        <div class="slider-wrap">
-            <div class="slider" id="orders-slider">
-                <!-- Các đơn hàng sẽ được thêm vào đây bằng JavaScript -->
-            </div>
-            
-        </div>
-    </section>
-    <!-- end order section -->
-
-    <!-- dish section -->
-    <section class="hot_section layout_padding">
-        <div class="container">
-            <div class="heading_container">
-                <h2>
-                    Danh sách món ăn
-                </h2>
-                <hr>
-            </div>
-        </div>
-
-        <!-- slider các món ăn  -->
-        <div class="slider-wrap">
-            <div class="slider" id="dishes-slider">
-
-            </div>
-            
-        </div>
-    </section>
-    <!-- end dish section -->
-
-    <script src="script.js"></script>
-
-    <!-- footer section -->
-    <section class="container-fluid footer_section">
-        <p>
-            &copy; 2025 All Rights Reserved. 41_SOA_GK
-        </p>
-    </section>
-  <!-- end footer section -->
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Mã hóa đơn</th>
+              <th>Bàn</th>
+              <th>Ngày</th>
+              <th>Tổng tiền</th>
+            </tr>
+          </thead>
+          <tbody id="history-list"></tbody>
+        </table>
+        <canvas id="revenueChart" width="400" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+  <script src="js/manager.js"></script>
 </body>
 </html>

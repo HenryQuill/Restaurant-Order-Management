@@ -1,110 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý bếp</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- slider stylesheet -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý bếp</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
-  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
-    <!-- fonts style -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Raleway:400,700&display=swap"
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Raleway:400,700&display=swap"
     rel="stylesheet" />
 
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
 </head>
+
 <body class="sub_page">
-    <div class="hero_area">
-        <!-- header section strats -->
-        <header class="header_section">
-          <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg custom_nav-container">
-              <a class="navbar-brand" href="Chef.html">
-                <img src="images/logo.png" alt="" />
-                <span>
-                  Chef
-                </span>
-              </a>
-    
-              <div class="navbar-collapse" id="">
-                <div class="custom_menu-btn">
-                  <button onclick="openNav()">
-                    <span class="s-1"> </span>
-                    <span class="s-2"> </span>
-                    <span class="s-3"> </span>
-                  </button>
-                </div>
-                <div id="myNav" class="overlay">
-                  <div class="overlay-content">
-                    <a href="waiter.html">Waiter page </a>
-                    <a href="manager.html">Manager page</a>
-                  </div>
-                </div>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="Chef.html">
+            <img src="images/logo.png" alt="" />
+            <span>
+              Chef
+            </span>
+          </a>
+
+          <div class="navbar-collapse" id="">
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1"> </span>
+                <span class="s-2"> </span>
+                <span class="s-3"> </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="waiter.html">Waiter page </a>
+                <a href="manager.html">Manager page</a>
               </div>
-            </nav>
+            </div>
           </div>
-        </header>
-        <!-- end header section -->
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- order section -->
+  <section class="hot_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Danh sách đơn hàng
+        </h2>
+        <hr>
+      </div>
+    </div>
+
+    <!-- slider các đơn hàng  -->
+    <div class="slider-wrap">
+      <div class="slider" id="orders-slider">
+        <!-- Các đơn hàng sẽ được thêm vào đây bằng JavaScript -->
       </div>
 
-    <!-- order section -->
-    <section class="hot_section layout_padding">
-        <div class="container">
-            <div class="heading_container">
-              <h2>
-                Danh sách đơn hàng
-              </h2>
-              <hr>
-            </div>
-        </div>
+    </div>
+  </section>
+  <!-- end order section -->
 
-        <!-- slider các đơn hàng  -->
-        <div class="slider-wrap">
-            <div class="slider" id="orders-slider">
-                <!-- Các đơn hàng sẽ được thêm vào đây bằng JavaScript -->
-            </div>
-            
-        </div>
-    </section>
-    <!-- end order section -->
+  <!-- dish section -->
+  <section class="hot_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Danh sách món ăn
+        </h2>
+        <hr>
+      </div>
+    </div>
 
-    <!-- dish section -->
-    <section class="hot_section layout_padding">
-        <div class="container">
-            <div class="heading_container">
-                <h2>
-                    Danh sách món ăn
-                </h2>
-                <hr>
-            </div>
-        </div>
+    <!-- slider các món ăn  -->
+    <div class="slider-wrap">
+      <div class="slider" id="dishes-slider">
 
-        <!-- slider các món ăn  -->
-        <div class="slider-wrap">
-            <div class="slider" id="dishes-slider">
+      </div>
 
-            </div>
-            
-        </div>
-    </section>
-    <!-- end dish section -->
+    </div>
+  </section>
+  <!-- end dish section -->
 
-    <script src="script.js"></script>
+  <script src="js/chef.js"></script>
 
-    <!-- footer section -->
-    <section class="container-fluid footer_section">
-        <p>
-            &copy; 2025 All Rights Reserved. 41_SOA_GK
-        </p>
-    </section>
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      &copy; 2025 All Rights Reserved. 41_SOA_GK
+    </p>
+  </section>
   <!-- end footer section -->
 </body>
+
 </html>

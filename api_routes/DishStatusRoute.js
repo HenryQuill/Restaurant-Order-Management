@@ -16,6 +16,7 @@ router.patch('/:dishID/available', async (req, res) => {
 
         // Đảo ngược trạng thái isAvailable
         dish.isAvailable = !dish.isAvailable;
+        
         await dish.save();
 
         res.status(200).json(dish);

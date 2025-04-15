@@ -7,6 +7,10 @@ const OrderDetailSchema = new mongoose.Schema({
         // autoincrement: true,
         unique: true
     },
+    note:{
+        type:String,
+        required: false
+    },
     tableID:{
         type: Number,
         required: true

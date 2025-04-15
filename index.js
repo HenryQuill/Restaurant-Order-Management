@@ -16,7 +16,7 @@ console.log('Connecting to MongoDB...');
 
 // Import routes
 const OrderDetailRoute = require('./api_routes/OrderDetailRoute');
-const OrderDetailStatusRoute = require('./api_routes/OrderDetailStatusRoute'); 
+const OrderDetailStatusRoute = require('./api_routes/OrderDetailStatusRoute');
 const DishRoute = require('./api_routes/DishRoute');
 const DishStatusRoute = require('./api_routes/DishStatusRoute');
 
@@ -38,14 +38,15 @@ async function initializeCollections() {
     const dishCount = await Dish.countDocuments();
     if (dishCount === 0) {
       await Dish.create([
-        { dishID: 1, dishName: 'Coleslaw', description: 'Advanced salad', note: 'Salmon recipe', price: 10, isAvailable: true },
-        { dishID: 2, dishName: 'Pho', description: 'Sample Description', note: 'No onions', price: 10, isAvailable: true },
-        { dishID: 3, dishName: 'Spaghetti', description: 'Classic Italian pasta', note: 'Add extra cheese', price: 12, isAvailable: true },
-        { dishID: 4, dishName: 'Burger', description: 'Juicy beef burger', note: 'No onions', price: 15, isAvailable: true },
-        { dishID: 5, dishName: 'Sushi', description: 'Fresh salmon sushi', note: 'Serve with wasabi', price: 20, isAvailable: true },
-        { dishID: 6, dishName: 'Tacos', description: 'Mexican-style tacos', note: 'Spicy sauce on the side', price: 10, isAvailable: true },
-        { dishID: 7, dishName: 'Steak', description: 'Grilled ribeye steak', note: 'Medium rare', price: 25, isAvailable: true },
-        { dishID: 8, dishName: 'Caesar Salad', description: 'Crispy romaine lettuce', note: 'Extra croutons', price: 8, isAvailable: true },
+        { dishID: 1, image: 'images/thit_bo_bong_tuyet.jpg', dishName: 'Thịt bò bông tuyết', description: '', price: 10, isAvailable: true },
+        // { dishID: 2, dishName: 'Pho', description: 'Sample Description',  price: 10, isAvailable: true },
+        // { dishID: 3, dishName: 'Spaghetti', description: 'Classic Italian pasta',  price: 12, isAvailable: true },
+        // { dishID: 4, dishName: 'Burger', description: 'Juicy beef burger', price: 15, isAvailable: true },
+        // { dishID: 5, dishName: 'Sushi', description: 'Fresh salmon sushi', price: 20, isAvailable: true },
+        // { dishID: 6, dishName: 'Tacos', description: 'Mexican-style tacos', price: 10, isAvailable: true },
+        // { dishID: 7, dishName: 'Steak', description: 'Grilled ribeye steak',  price: 25, isAvailable: true },
+        // { dishID: 8, dishName: 'Caesar Salad', description: 'Crispy romaine lettuce', price: 8, isAvailable: true },
+
       ]);
       console.log('Dishes initialized');
     }
@@ -85,16 +86,16 @@ async function initializeCollections() {
     const orderDetailCount = await OrderDetail.countDocuments();
     if (orderDetailCount === 0) {
       await OrderDetail.create([
-        { orderDetailID: 1, tableID: 1, dishID: 1, price: 10, orderID: 1, quantity: 2, dishName: 'Coleslaw', isDone: false },
-        { orderDetailID: 2, tableID: 1, dishID: 2, price: 10, orderID: 1, quantity: 1, dishName: 'Pho', isDone: false },
-        { orderDetailID: 3, tableID: 2, dishID: 3, price: 12, orderID: 2, quantity: 1, dishName: 'Spaghetti', isDone: false },
-        { orderDetailID: 4, tableID: 2, dishID: 4, price: 15, orderID: 2, quantity: 1, dishName: 'Burger', isDone: false },
-        { orderDetailID: 5, tableID: 3, dishID: 5, price: 20, orderID: 3, quantity: 2, dishName: 'Sushi', isDone: false },
-        { orderDetailID: 6, tableID: 3, dishID: 6, price: 10, orderID: 3, quantity: 1, dishName: 'Tacos', isDone: false },
-        { orderDetailID: 7, tableID: 4, dishID: 7, price: 25, orderID: 4, quantity: 1, dishName: 'Steak', isDone: false },
-        { orderDetailID: 8, tableID: 4, dishID: 8, price: 8, orderID: 4, quantity: 1, dishName: 'Caesar Salad', isDone: false },
-        { orderDetailID: 9, tableID: 5, dishID: 1, price: 10, orderID: 5, quantity: 2, dishName: 'Coleslaw', isDone: false },
-        { orderDetailID: 10, tableID: 5, dishID: 2, price: 10, orderID: 5, quantity: 1, dishName: 'Pho', isDone: false },
+        { orderDetailID: 1, note: 'không rau', tableID: 1, dishID: 1, price: 10, orderID: 1, quantity: 2, dishName: dishID.dishName, isDone: false },
+        { orderDetailID: 2, note: 'ít mắm', tableID: 1, dishID: 2, price: 10, orderID: 1, quantity: 1, dishName: 'Pho', isDone: false },
+        { orderDetailID: 3, note: 'không sốt', tableID: 2, dishID: 3, price: 12, orderID: 2, quantity: 1, dishName: 'Spaghetti', isDone: false },
+        { orderDetailID: 4, note: 'thêm phô mai', tableID: 2, dishID: 4, price: 15, orderID: 2, quantity: 1, dishName: 'Burger', isDone: false },
+        { orderDetailID: 5, note: 'ít wasabi', tableID: 3, dishID: 5, price: 20, orderID: 3, quantity: 2, dishName: 'Sushi', isDone: false },
+        { orderDetailID: 6, note: 'không hành', tableID: 3, dishID: 6, price: 10, orderID: 3, quantity: 1, dishName: 'Tacos', isDone: false },
+        { orderDetailID: 7, note: 'chín vừa', tableID: 4, dishID: 7, price: 25, orderID: 4, quantity: 1, dishName: 'Steak', isDone: false },
+        { orderDetailID: 8, note: 'không crouton', tableID: 4, dishID: 8, price: 8, orderID: 4, quantity: 1, dishName: 'Caesar Salad', isDone: false },
+        { orderDetailID: 9, note: 'thêm sốt', tableID: 5, dishID: 1, price: 10, orderID: 5, quantity: 2, dishName: 'Coleslaw', isDone: false },
+        { orderDetailID: 10, note: 'nhiều rau', tableID: 5, dishID: 2, price: 10, orderID: 5, quantity: 1, dishName: 'Pho', isDone: false }
       ]);
       console.log('OrderDetails initialized');
     }

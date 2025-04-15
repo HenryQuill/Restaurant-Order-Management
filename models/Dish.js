@@ -7,18 +7,19 @@ const DishSchema = new mongoose.Schema({
         // autoincrement: true,
         required: true
     },
+    image: {
+        type: String,
+        required: true
+    },
     dishName: {
         type: String,
         required: true
     },
     description: {
         type: String,
-        required: true
-    },
-    note: {
-        type: String,
         required: false
     },
+
     price: {
         type: Number,
         required: true

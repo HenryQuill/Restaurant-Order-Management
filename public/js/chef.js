@@ -1,7 +1,7 @@
 // Fetch orders on page load
 document.addEventListener('DOMContentLoaded', () => {
     fetchOrders();
-    fetchDishes(); 
+    fetchDishes();
 });
 
 // Hàm lấy danh sách đơn hàng từ API 
@@ -33,7 +33,7 @@ const fetchDishes = async () => {
         }
         const dishes = await response.json();
         console.log('Dữ liệu món ăn:', dishes);
-        renderDishes(dishes); 
+        renderDishes(dishes);
     } catch (err) {
         console.error('Error fetching dishes:', err);
         alert('Không thể tải danh sách món ăn. Vui lòng thử lại!');
@@ -49,16 +49,25 @@ const renderOrders = (orders) => {
         const div = document.createElement('div');
         div.classList.add('orderdetail-item'); // Thêm class "orderdetail-item"
         div.innerHTML = `
-            <h3>Đơn hàng #${order.orderDetailID}</h3>
-            <p>Món ăn: ${order.dishName}</p>
-            <p>Số lượng: ${order.quantity}</p>
-            <p>Ghi chú: ${order.note || 'Không có ghi chú'}</p>
+        <div class="card" >
+          <div class="card-body">
+            <h5 class="card-title">Đơn hàng #${order.orderDetailID}</h5>
+            <p class="card-text">Món ăn: ${order.dishName}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Số lượng: ${order.quantity}</li>
+            <li class="list-group-item">Ghi chú: ${order.note || 'Không có ghi chú'}</li>
+          </ul>
+          <div class="card-body">
             <button 
                 data-id="${order.orderDetailID}" 
                 style="background-color: ${order.isDone ? 'green' : 'red'}; color: white;"
-                onclick="markOrderComplete(${order.orderDetailID})">
-                ${order.isDone ? 'Hoàn thành':'Chưa hoàn thành'  }
+                onclick="markOrderComplete(${order.orderDetailID})"
+                class="card-link">
+                ${order.isDone ? 'Hoàn thành' : 'Chưa hoàn thành'}
             </button>
+          </div>
+        </div>
         `;
         ordersSlider.appendChild(div);
     });
@@ -73,17 +82,27 @@ const renderDishes = (dishes) => {
         const div = document.createElement('div');
         div.classList.add('dish-item'); // Thêm class "orderdetail-item"
         div.innerHTML = `
-            <h3> ${dish.dishName }</h3>
-            <p>Mô tả: ${dish.description}</p>
-            <p>Ghi chú: ${dish.note || 'Không có ghi chú'}</p>
-            <p>Giá tiền: ${dish.price}</p>
+        <div class="card" >
+          <img src="${dish.image}" class="card-img-top" alt="${dish.dishName}" object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">${dish.dishName}</h5>
+            <p class="card-text">Mô tả: ${dish.description}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Giá tiền: ${dish.price}</li>
+          </ul>
+          <div class="card-body">
             <button 
                 data-id="${dish.dishID}" 
                 style="background-color: ${dish.isAvailable ? 'red' : 'green'}; color: white;"
-                onclick="markDishAvailable(${dish.dishID})">
+                onclick="markDishAvailable(${dish.dishID})"
+                class="card-link">
                 ${dish.isAvailable ? 'Không có sẵn' : 'Có sẵn'}
             </button>
+          </div>
+        </div>
         `;
+
         dishesSlider.appendChild(div);
     });
 };
@@ -139,7 +158,7 @@ const markDishAvailable = async (dishID) => {
 
         const updatedDish = await response.json();
         console.log('Cập nhật trạng thái thành công:', updatedDish);
-        
+
         // Cập nhật giao diện của nút
         const button = document.querySelector(`button[data-id="${dishID}"]`);
         if (updatedDish.isAvailable) {
@@ -151,7 +170,7 @@ const markDishAvailable = async (dishID) => {
         }
 
         // Làm mới danh sách món ăn
-        await fetchDishes(); 
+        await fetchDishes();
     } catch (error) {
         console.error('Lỗi khi đánh dấu có sẵn:', error);
         alert('Không thể cập nhật trạng thái. Vui lòng thử lại!');
@@ -162,7 +181,7 @@ const markDishAvailable = async (dishID) => {
 function openNav() {
     document.getElementById("myNav").classList.toggle("menu_width");
     document
-      .querySelector(".custom_menu-btn")
-      .classList.toggle("menu_btn-style");
+        .querySelector(".custom_menu-btn")
+        .classList.toggle("menu_btn-style");
 }
 
