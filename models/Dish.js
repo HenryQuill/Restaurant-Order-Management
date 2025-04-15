@@ -17,9 +17,8 @@ const DishSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: false
+        required: true
     },
-
     price: {
         type: Number,
         required: true
@@ -27,7 +26,7 @@ const DishSchema = new mongoose.Schema({
     isAvailable: {
         type: Boolean,
         default: false,
-        required: true
+        required: false
     }
 });
 

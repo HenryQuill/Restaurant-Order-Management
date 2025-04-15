@@ -52,7 +52,7 @@ const renderOrders = (orders) => {
         <div class="card" >
           <div class="card-body">
             <h5 class="card-title">Đơn hàng #${order.orderDetailID}</h5>
-            <p class="card-text">Món ăn: ${order.dishName}</p>
+            <h5 class="card-title">Món ăn: ${order.dishName}</h5>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Số lượng: ${order.quantity}</li>
